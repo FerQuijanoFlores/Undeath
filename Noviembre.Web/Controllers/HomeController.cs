@@ -8,10 +8,19 @@ namespace Noviembre.Web.Controllers
 {
     public class HomeController : Controller
     {
+
+        //acciones de controlador
         public ActionResult Index()
         {
             return View();
         }
+
+        public ActionResult Bienvenido() { 
+        
+            return Bienvenido();
+
+        }
+
 
         public ActionResult About()
         {
