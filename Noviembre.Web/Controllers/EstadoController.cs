@@ -14,7 +14,7 @@ namespace Noviembre.Web.Controllers
         public ActionResult Index()
         {
             List<Estado> estados = Estado.GetAll();
-            return View();
+            return View(estados);
         }
     }
 }
