@@ -17,7 +17,7 @@ namespace Noviembre.Web.Controllers
 
         public ActionResult Bienvenido() { 
         
-            return Bienvenido();
+            return View();
 
         }
 
