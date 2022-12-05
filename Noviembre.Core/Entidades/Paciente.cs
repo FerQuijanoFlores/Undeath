@@ -90,36 +90,6 @@ namespace Noviembre.Core.Entidades
             return paciente;
         }
 
-        /* public static Paciente GetById(int id)
-         {
-             Paciente pacientes = new Paciente();
-             try
-             {
-                 Conexion conexion = new Conexion();
-                 if (conexion.OpenConnection())
-                 {
-                     string query = "SELECT id, nombre FROM paciente WHERE id = @id";
-                     MySqlCommand cmd = new MySqlCommand(query, conexion.connection);
-                     cmd.Parameters.AddWithValue("@id", id);
-
-                     MySqlDataReader dataReader = cmd.ExecuteReader();
-                     while (dataReader.Read())
-                     {
-                         pacientes.Id = int.Parse(dataReader["id"].ToString());
-                         pacientes.Nombre = dataReader["nombre"].ToString();
-
-                     }
-                     dataReader.Close();
-                     conexion.CloseConnection();
-                 }
-
-             }
-             catch (Exception ex)
-             {
-                 throw ex;
-             }
-             return pacientes;
-         }*/
 
         public static bool Guardar(int id, string nombre, string apellido, string nss, string curp, string email)
         {
@@ -161,5 +131,28 @@ namespace Noviembre.Core.Entidades
             return result;
         }
 
+    
+
+    public static bool Eliminar(int id)
+    {
+        bool result = false;
+        try
+        {
+            Conexion conexion = new Conexion();
+            if (conexion.OpenConnection())
+            {
+                MySqlCommand cmd = conexion.connection.CreateCommand();
+                cmd.CommandText = "DELETE FROM paciente WHERE id = @id";
+                cmd.Parameters.AddWithValue("@id", id);
+                result = cmd.ExecuteNonQuery() == 1;
+            }
+        }
+        catch (Exception ex)
+        {
+            throw ex;
+        }
+        return result;
+
     }
+}
 }

@@ -63,7 +63,7 @@ namespace Noviembre.Core.Entidades
                 Conexion conexion = new Conexion();
                 if (conexion.OpenConnection())
                 {
-                    string query = "SELECT id, nombre, apellido, especialidad FROM doctor WHERE id = @id";
+                    string query = "SELECT id, nombre, apellido, especialidad, rfc, cedulaProfecional, email FROM doctor WHERE id = @id";
                     MySqlCommand cmd = new MySqlCommand(query, conexion.connection);
                     cmd.Parameters.AddWithValue("@id", id);
 
@@ -74,6 +74,9 @@ namespace Noviembre.Core.Entidades
                         doctor.Nombre = dataReader["nombre"].ToString();
                         doctor.Apellido = dataReader["apellido"].ToString();
                         doctor.Especialidad = dataReader["especialidad"].ToString();
+                        doctor.RFC = dataReader["rfc"].ToString();
+                        doctor.CedulaProfecional = dataReader["cedulaProfecional"].ToString();
+                        doctor.Email = dataReader["email"].ToString();
 
                     }
                     dataReader.Close();
@@ -134,6 +137,28 @@ namespace Noviembre.Core.Entidades
                 throw ex;
             }
             return result;
+        }
+
+        public static bool Eliminar(int id)
+        {
+            bool result = false;
+            try
+            {
+                Conexion conexion = new Conexion();
+                if (conexion.OpenConnection())
+                {
+                    MySqlCommand cmd = conexion.connection.CreateCommand();
+                    cmd.CommandText = "DELETE FROM doctor WHERE id = @id";
+                    cmd.Parameters.AddWithValue("@id", id);
+                    result = cmd.ExecuteNonQuery() == 1;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return result;
+
         }
 
     }

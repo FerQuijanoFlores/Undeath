@@ -33,26 +33,7 @@
                         </form>
 
                     </div>
-                    <div class="panel-body">
                         
-                        <form>
-                            <input type="hidden" class="form-control" name="id" value="@Model.Id">
-
-                            <div class="form-group">
-                                <label>Número de Consultorio:</label>
-                                <input class="form-control" name="numeroExterior" value="@if (Model.Id != 0) { @Model.NumeroExterior}" />
-                                <label>Número de Doctor:</label>
-                                <input class="form-control" name="idDoctor" value="@if (Model.Id != 0) { @Model.Doctor.Id}" />
-
-
-
-                            </div>
-
-                            <button class="btn btn-success" type="submit">Guardar</button>
-
-                        </form>
-
-                    </div>
                 </div>
             </div>
         </div>

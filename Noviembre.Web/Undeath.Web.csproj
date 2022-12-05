@@ -120,20 +120,11 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\ComprobanteDomicilioController.cs" />
     <Compile Include="Controllers\ConsultaController.cs" />
     <Compile Include="Controllers\ConsultorioController.cs" />
     <Compile Include="Controllers\DoctorController.cs" />
-    <Compile Include="Controllers\DocumentoNacionalidadController.cs" />
-    <Compile Include="Controllers\EspecialidadController.cs" />
-    <Compile Include="Controllers\EstadoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\LoginController.cs" />
-    <Compile Include="Controllers\ModuloController.cs" />
-    <Compile Include="Controllers\MunicipioController.cs" />
     <Compile Include="Controllers\PacienteController.cs" />
-    <Compile Include="Controllers\TramiteController.cs" />
-    <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -178,6 +169,10 @@
     <Content Include="Content\js\metisMenu.min.js" />
     <Content Include="Content\js\morris-data.js" />
     <Content Include="Content\js\morris.min.js" />
+    <Content Include="Content\js\Undeath\consulta.js" />
+    <Content Include="Content\js\Undeath\consultorio.js" />
+    <Content Include="Content\js\Undeath\doctor.js" />
+    <Content Include="Content\js\Undeath\paciente.js" />
     <Content Include="Content\js\raphael.min.js" />
     <Content Include="Content\js\startmin.js" />
     <Content Include="favicon.ico" />
@@ -218,19 +213,8 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Bienvenido.cshtml" />
-    <Content Include="Views\Usuario\Index.cshtml" />
-    <Content Include="Views\Estado\Index.cshtml" />
-    <Content Include="Views\ComprobanteDomicilio\Index.cshtml" />
-    <Content Include="Views\DocumentoNacionalidad\Index.cshtml" />
-    <Content Include="Views\ComprobanteDomicilio\Registro.cshtml" />
-    <Content Include="Views\DocumentoNacionalidad\Registro.cshtml" />
-    <Content Include="Views\Estado\Registro.cshtml" />
-    <Content Include="Views\Modulo\Index.cshtml" />
-    <Content Include="Views\Municipio\Index.cshtml" />
-    <Content Include="Views\Tramites\Index.cshtml" />
     <Content Include="Views\Paciente\Index.cshtml" />
     <Content Include="Views\Paciente\Registro.cshtml" />
-    <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\Doctor\Index.cshtml" />
     <Content Include="Views\Consultorio\Index.cshtml" />
     <Content Include="Views\Consultorio\Registro.cshtml" />
@@ -239,9 +223,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\js\doc\" />
     <Folder Include="Models\" />
-    <Folder Include="Views\Especialidad\" />
-    <Folder Include="Views\Tramite\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

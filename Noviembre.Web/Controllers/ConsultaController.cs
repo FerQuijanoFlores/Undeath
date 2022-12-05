@@ -15,5 +15,12 @@ namespace Noviembre.Web.Controllers
             List<Consulta> consultas = Consulta.GetAll();
             return View(consultas);
         }
+
+        public ActionResult Eliminar(int id)
+        {
+            Consulta.Eliminar(id);
+            return RedirectToAction("Index");
+
+        }
     }
 }

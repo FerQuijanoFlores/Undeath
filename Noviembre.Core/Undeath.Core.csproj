@@ -80,20 +80,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Database\Conexion.cs" />
-    <Compile Include="Entidades\Cita.cs" />
-    <Compile Include="Entidades\Ciudadano.cs" />
     <Compile Include="Entidades\Consulta.cs" />
     <Compile Include="Entidades\Consultorio.cs" />
     <Compile Include="Entidades\Doctor.cs" />
-    <Compile Include="Entidades\Especialidad.cs" />
     <Compile Include="Entidades\Paciente.cs" />
-    <Compile Include="Entidades\ComprobanteDomicilio.cs" />
-    <Compile Include="Entidades\DocumentoNacionalidad.cs" />
-    <Compile Include="Entidades\Estado.cs" />
-    <Compile Include="Entidades\Modulo.cs" />
-    <Compile Include="Entidades\Municipio.cs" />
-    <Compile Include="Entidades\Tramite.cs" />
-    <Compile Include="Entidades\Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

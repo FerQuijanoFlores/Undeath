@@ -30,5 +30,12 @@ namespace Noviembre.Web.Controllers
 
 
         }
+
+        public ActionResult Eliminar(int id)
+        {
+            Paciente.Eliminar(id);
+            return RedirectToAction("Index");
+
+        }
     }
 }

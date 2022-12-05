@@ -26,5 +26,12 @@ namespace Noviembre.Web.Controllers
             return RedirectToAction("Index");
 
         }
+
+        public ActionResult Eliminar(int id)
+        {
+            Consultorio.Eliminar(id);
+            return RedirectToAction("Index");
+
+        }
     }
 }

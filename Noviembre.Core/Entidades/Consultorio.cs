@@ -22,9 +22,12 @@ namespace Noviembre.Core.Entidades
                 Conexion conexion = new Conexion();
                 if (conexion.OpenConnection())
                 {
-                    Doctor doctor = new Doctor();
+                    
                    
-                    string query = "SELECT con.id, con.numeroExterior, con.idDoctor, doc.id AS \"idDoc\", doc.nombre, doc.apellido, doc.especialidad FROM consultorio con INNER JOIN doctor doc ON con.idDoctor = doc.id;";
+                    string query = "SELECT con.id, con.numeroExterior, con.idDoctor, doc.id AS idDoc, doc.nombre, doc.apellido, doc.especialidad " +
+                        " FROM consultorio con " +
+                        " INNER JOIN doctor doc " +
+                        " ON con.idDoctor = doc.id;";
                    
 
                     MySqlCommand command = new MySqlCommand(query, conexion.connection);
@@ -35,6 +38,7 @@ namespace Noviembre.Core.Entidades
                     while (dataReader.Read())
                     {
                         Consultorio consultorio = new Consultorio();
+                        Doctor doctor = new Doctor();
                         consultorio.Id = int.Parse(dataReader["id"].ToString());
                         consultorio.NumeroExterior = int.Parse(dataReader["numeroExterior"].ToString());
                         doctor.Id = int.Parse(dataReader["idDoc"].ToString());
@@ -108,11 +112,12 @@ namespace Noviembre.Core.Entidades
                     string query = "SELECT id, numeroExterior, idDoctor FROM consultorio WHERE id = @id";
                     MySqlCommand cmd = new MySqlCommand(query, conexion.connection);
                     cmd.Parameters.AddWithValue("@id", id);
-                    Doctor doctor = new Doctor();
+                    
 
                     MySqlDataReader dataReader = cmd.ExecuteReader();
                     while (dataReader.Read())
                     {
+                        Doctor doctor = new Doctor();
                         consultorio.Id = int.Parse(dataReader["id"].ToString());
                         consultorio.NumeroExterior = int.Parse(dataReader["numeroExterior"].ToString());
 
@@ -132,6 +137,28 @@ namespace Noviembre.Core.Entidades
                 throw ex;
             }
             return consultorio;
+        }
+
+        public static bool Eliminar(int id)
+        {
+            bool result = false;
+            try
+            {
+                Conexion conexion = new Conexion();
+                if (conexion.OpenConnection())
+                {
+                    MySqlCommand cmd = conexion.connection.CreateCommand();
+                    cmd.CommandText = "DELETE FROM consultorio WHERE id = @id";
+                    cmd.Parameters.AddWithValue("@id", id);
+                    result = cmd.ExecuteNonQuery() == 1;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return result;
+
         }
     }
 }

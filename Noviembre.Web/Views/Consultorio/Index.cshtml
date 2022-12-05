@@ -48,7 +48,7 @@
                                             </td>
                                             <td>
                                                 <a href="@Url.Action("Registro", "Consultorio", new { @id = e.Id })" class="btn btn-primary btn-circle"> <i class="fa fa-pencil"></i> Editar</a>
-                                                <a class="btn btn-danger btn-circle"> <i class="fa fa-trash-o"></i> </a>
+                                                <a onclick="eliminar(@e.Id)" class="btn fa fa-trash btn-danger btn-circle"></a>
 
                                             </td>
                                         </tr>
@@ -69,3 +69,5 @@
 
     </div>
 </div>
+
+<script src="~/Content/js/Undeath/consultorio.js"></script>

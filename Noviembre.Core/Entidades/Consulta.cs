@@ -24,9 +24,7 @@ namespace Noviembre.Core.Entidades
                 Conexion conexion = new Conexion();
                 if (conexion.OpenConnection())
                 {
-                    Doctor doctor = new Doctor();
-                    Paciente paciente = new Paciente();
-                    Consultorio consultorio = new Consultorio();
+                    
                     string query = "SELECT consul.id, consul.fecha, consul.idConsultorio, consul.idDoctor, consul.idPaciente, con.numeroExterior, doc.nombre AS \"nombreDoc\", doc.apellido AS \"apellidoDoc\", pac.nombre AS \"nombrePaciente\", pac.apellidos AS \"apellidoPaciente\" FROM cita consul INNER JOIN doctor doc INNER JOIN consultorio con INNER JOIN paciente pac ON consul.idDoctor = doc.id AND consul.idPaciente = pac.id AND consul.idConsultorio = con.id;";
 
                     MySqlCommand command = new MySqlCommand(query, conexion.connection);
@@ -34,6 +32,9 @@ namespace Noviembre.Core.Entidades
                     MySqlDataReader dataReader = command.ExecuteReader();
                     while (dataReader.Read())
                     {
+                        Doctor doctor = new Doctor();
+                        Paciente paciente = new Paciente();
+                        Consultorio consultorio = new Consultorio();
                         Consulta consulta = new Consulta();
                         consulta.Id = int.Parse(dataReader["id"].ToString());
                         consulta.Fecha = DateTime.Parse(dataReader["fecha"].ToString());
@@ -63,6 +64,28 @@ namespace Noviembre.Core.Entidades
                 throw ex;
             }
             return consultas;
+        }
+
+        public static bool Eliminar(int id)
+        {
+            bool result = false;
+            try
+            {
+                Conexion conexion = new Conexion();
+                if (conexion.OpenConnection())
+                {
+                    MySqlCommand cmd = conexion.connection.CreateCommand();
+                    cmd.CommandText = "DELETE FROM cita WHERE id = @id";
+                    cmd.Parameters.AddWithValue("@id", id);
+                    result = cmd.ExecuteNonQuery() == 1;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return result;
+
         }
     }
 }

@@ -24,11 +24,14 @@ namespace Noviembre.Web.Controllers
         public ActionResult Guardar(int id, string nombre, string apellido, string RFC, string cedulaProfecional, string email, string especialidad)
         {
             Doctor.Guardar(id, nombre, apellido, RFC, cedulaProfecional, email, especialidad);
-            return RedirectToAction("Index"); //Invocar la lista de Paciente
+            return RedirectToAction("Index"); 
 
+        }
 
-            //List<Paciente> estados = Paciente.GetAll(); //PUEDE SER TAMBIEN ASI PERO SE REPETIRIA LO DE ARRIBA
-            //return View("Index", estados);
+        public ActionResult Eliminar(int id)
+        {
+            Doctor.Eliminar(id);
+            return RedirectToAction("Index");
 
         }
     }
