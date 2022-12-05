@@ -1,12 +1,12 @@
 ﻿<!-- Page Content -->
 @using Noviembre.Core.Entidades
-@model List<Paciente>
+@model List<Consultorio>
 
 <div id="page-wrapper">
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">Pacientes</h1>
+                <h1 class="page-header">Consultorios</h1>
             </div>
         </div>
 
@@ -15,51 +15,51 @@
                 <div class="panel panel-default">
                     <div class="panel-body">
 
+                        
+
                         <div class="table-responsive">
                             <table class="table table-striped">
                                 <thead>
                                     <tr>
+                                        <th>Número De Consultorio</th>
                                         <th>Nombre</th>
                                         <th>Apellido</th>
-                                        <th>Número de Seguro Social</th>
-                                        <th>Curp</th>
-                                        <th>Email</th>
-                                        <th>Acciones</th>
+                                        <th>Especialidad</th>
+
 
                                     </tr>
                                 </thead>
 
                                 <tbody>
-                                    @foreach (Paciente e in Model)
+                                    @foreach (Consultorio e in Model)
                                     {
                                         <tr>
                                             <td>
-                                                @e.Nombre
+                                                @e.NumeroExterior
                                             </td>
                                             <td>
-                                                @e.apellido
+                                                @e.Doctor.Nombre
                                             </td>
                                             <td>
-                                                @e.nss
+                                                @e.Doctor.Apellido
                                             </td>
                                             <td>
-                                                @e.curp
+                                                @e.Doctor.Especialidad
                                             </td>
                                             <td>
-                                                @e.email
-                                            </td>
-
-                                            <td>
-                                                <a href="@Url.Action("Registro", "Paciente", new { @id = e.Id })" class="btn btn-primary btn-circle"> <i class="fa fa-pencil"></i> Editar</a>
+                                                <a href="@Url.Action("Registro", "Consultorio", new { @id = e.Id })" class="btn btn-primary btn-circle"> <i class="fa fa-pencil"></i> Editar</a>
                                                 <a class="btn btn-danger btn-circle"> <i class="fa fa-trash-o"></i> </a>
 
                                             </td>
                                         </tr>
+
+
+
                                     }
 
                                 </tbody>
                             </table>
-                            <a href="@Url.Action("Registro","Paciente", new {id =0 })" class="btn btn-primary">Agregar nuevo</a>
+                            <a href="@Url.Action("Registro","Consultorio", new {id =0 })" class="btn btn-primary">Agregar nuevo</a>
                         </div>
                     </div>
                 </div>

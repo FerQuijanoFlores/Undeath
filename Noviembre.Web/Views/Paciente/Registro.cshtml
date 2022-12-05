@@ -18,8 +18,21 @@
                             <input type="hidden" class="form-control" name="id" value="@Model.Id">
 
                             <div class="form-group">
-                                <label>Nombre del estado:</label>
+                                <label>Nombre del paciente:</label>
                                 <input class="form-control" name="nombre" value="@if (Model.Id != 0) { @Model.Nombre}" />
+
+                                <label>Apellidos del paciente:</label>
+                                <input class="form-control" name="apellido" value="@if (Model.Id != 0) { @Model.apellido}" />
+
+                                <label>Numero de seguro social del paciente:</label>
+                                <input class="form-control" name="nss" value="@if (Model.Id != 0) { @Model.nss}" />
+
+                                <label>Curp paciente:</label>
+                                <input class="form-control" name="curp" value="@if (Model.Id != 0) { @Model.curp}" />
+
+                                <label>Email del paciente:</label>
+                                <input class="form-control" name="email" value="@if (Model.Id != 0) { @Model.email}" />
+
 
                             </div>
 

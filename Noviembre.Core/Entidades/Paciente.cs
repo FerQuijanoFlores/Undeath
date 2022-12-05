@@ -25,7 +25,7 @@ namespace Noviembre.Core.Entidades
                 Conexion conexion = new Conexion();
                 if (conexion.OpenConnection())
                 {
-                    string query = "SELECT id, nombre, apellidos, nss FROM paciente ORDER BY nombre;";
+                    string query = "SELECT id, nombre, apellidos, nss, curp, email FROM paciente ORDER BY nombre;";
 
                     MySqlCommand command = new MySqlCommand(query, conexion.connection);
 
@@ -37,6 +37,8 @@ namespace Noviembre.Core.Entidades
                         paciente.Nombre = dataReader["nombre"].ToString();
                         paciente.apellido = dataReader["apellidos"].ToString();
                         paciente.nss = dataReader["nss"].ToString();
+                        paciente.curp = dataReader["curp"].ToString();
+                        paciente.email = dataReader["email"].ToString();
 
                         pacientes.Add(paciente);
 
@@ -55,21 +57,25 @@ namespace Noviembre.Core.Entidades
 
         public static Paciente GetById(int id)
         {
-            Paciente pacientes = new Paciente();
+            Paciente paciente = new Paciente();
             try
             {
                 Conexion conexion = new Conexion();
                 if (conexion.OpenConnection())
                 {
-                    string query = "SELECT id, nombre FROM paciente WHERE id = @id";
+                    string query = "SELECT id, nombre, apellidos, nss, curp, email FROM paciente WHERE id = @id";
                     MySqlCommand cmd = new MySqlCommand(query, conexion.connection);
                     cmd.Parameters.AddWithValue("@id", id);
 
                     MySqlDataReader dataReader = cmd.ExecuteReader();
                     while (dataReader.Read())
                     {
-                        pacientes.Id = int.Parse(dataReader["id"].ToString());
-                        pacientes.Nombre = dataReader["nombre"].ToString();
+                        paciente.Id = int.Parse(dataReader["id"].ToString());
+                        paciente.Nombre = dataReader["nombre"].ToString();
+                        paciente.apellido = dataReader["apellidos"].ToString();
+                        paciente.nss = dataReader["nss"].ToString();
+                        paciente.curp = dataReader["curp"].ToString();
+                        paciente.email = dataReader["email"].ToString();
 
                     }
                     dataReader.Close();
@@ -81,15 +87,43 @@ namespace Noviembre.Core.Entidades
             {
                 throw ex;
             }
-            return pacientes;
+            return paciente;
         }
 
-        public static bool Verificar(string nombre, string apellido, string nss)
+        /* public static Paciente GetById(int id)
+         {
+             Paciente pacientes = new Paciente();
+             try
+             {
+                 Conexion conexion = new Conexion();
+                 if (conexion.OpenConnection())
+                 {
+                     string query = "SELECT id, nombre FROM paciente WHERE id = @id";
+                     MySqlCommand cmd = new MySqlCommand(query, conexion.connection);
+                     cmd.Parameters.AddWithValue("@id", id);
+
+                     MySqlDataReader dataReader = cmd.ExecuteReader();
+                     while (dataReader.Read())
+                     {
+                         pacientes.Id = int.Parse(dataReader["id"].ToString());
+                         pacientes.Nombre = dataReader["nombre"].ToString();
+
+                     }
+                     dataReader.Close();
+                     conexion.CloseConnection();
+                 }
+
+             }
+             catch (Exception ex)
+             {
+                 throw ex;
+             }
+             return pacientes;
+         }*/
+
+        public static bool Guardar(int id, string nombre, string apellido, string nss, string curp, string email)
         {
-            bool verificado = false;
-            
-            //List<Paciente> pacientes = new List<Paciente>();
-            
+            bool result = false;
             try
             {
 
@@ -98,37 +132,33 @@ namespace Noviembre.Core.Entidades
                 {
                     MySqlCommand cmd = conexion.connection.CreateCommand();
 
-
-                    //if (id == 0)
-                    //{
-                        cmd.CommandText = "SELECT * FROM paciente WHERE id = @nombre, apellidos = @apellido, nss = @nss";
+                    if (id == 0)
+                    {
+                        cmd.CommandText = "INSERT INTO paciente (nombre, apellidos, nss, curp, email) VALUES (@nombre, @apellido, @nss, @curp, @email)";
                         cmd.Parameters.AddWithValue("@nombre", nombre);
                         cmd.Parameters.AddWithValue("@apellido", apellido);
                         cmd.Parameters.AddWithValue("@nss", nss);
-                    /*}
+                        cmd.Parameters.AddWithValue("@curp", curp);
+                        cmd.Parameters.AddWithValue("@email", email);
+                    }
                     else
                     {
-                        cmd.CommandText = "UPDATE estado SET nombre = @nombre WHERE id = @id";
+                        cmd.CommandText = "UPDATE paciente SET nombre = @nombre, apellidos = @apellido, nss = @nss, curp = @curp, email = @email WHERE id = @id";
                         cmd.Parameters.AddWithValue("@id", id);
                         cmd.Parameters.AddWithValue("@nombre", nombre);
-                    }*/
-
-                    verificado = cmd.ExecuteNonQuery() == 1;
-
-                    /* if (cmd.EndExecuteNonQuery() == 1)
-                     {
-                         result = true;
-
-                     }else { 
-                         result = false;
-                     }*/
+                        cmd.Parameters.AddWithValue("@apellido", apellido);
+                        cmd.Parameters.AddWithValue("@nss", nss);
+                        cmd.Parameters.AddWithValue("@curp", curp);
+                        cmd.Parameters.AddWithValue("@email", email);
+                    }
+                    result = cmd.ExecuteNonQuery() == 1;
                 }
             }
             catch (Exception ex)
             {
                 throw ex;
             }
-            return verificado;
+            return result;
         }
 
     }

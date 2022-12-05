@@ -121,6 +121,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ComprobanteDomicilioController.cs" />
+    <Compile Include="Controllers\ConsultorioController.cs" />
     <Compile Include="Controllers\DoctorController.cs" />
     <Compile Include="Controllers\DocumentoNacionalidadController.cs" />
     <Compile Include="Controllers\EspecialidadController.cs" />
@@ -230,6 +231,8 @@
     <Content Include="Views\Paciente\Registro.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\Doctor\Index.cshtml" />
+    <Content Include="Views\Consultorio\Index.cshtml" />
+    <Content Include="Views\Consultorio\Registro.cshtml" />
     <Content Include="Views\Doctor\Registro.cshtml" />
   </ItemGroup>
   <ItemGroup>

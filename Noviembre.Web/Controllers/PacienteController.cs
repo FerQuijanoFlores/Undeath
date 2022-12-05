@@ -22,5 +22,13 @@ namespace Noviembre.Web.Controllers
             Paciente pacientes = Paciente.GetById(id);
             return View(pacientes);
         }
+
+        public ActionResult Guardar(int id, string nombre, string apellido, string nss, string curp, string email)
+        {
+            Paciente.Guardar(id, nombre, apellido, nss, curp, email);
+            return RedirectToAction("Index");
+
+
+        }
     }
 }
