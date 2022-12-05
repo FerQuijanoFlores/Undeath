@@ -1,0 +1,48 @@
+﻿@using Noviembre.Core.Entidades
+@model Doctor
+
+<div id="page-wrapper">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Registro de doctores</h1>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+
+                        <form action="@Url.Action("Guardar", "Doctor")">
+                            <input type="hidden" class="form-control" name="id" value="@Model.Id">
+
+                            <div class="form-group">
+                                <label>Nombre del Doctor:</label>
+                                <input class="form-control" name="nombre" value="@if (Model.Id != 0) { @Model.Nombre}" />
+                                <label>Apellidos del Doctor:</label>
+                                <input class="form-control" name="apellido" value="@if (Model.Id != 0) { @Model.Apellido}" />
+                                <label>RFC del Doctor:</label>
+                                <input class="form-control" name="RFC" value="@if (Model.Id != 0) { @Model.RFC}" />
+                                <label>Cedula profecional del Doctor:</label>
+                                <input class="form-control" name="cedulaProfecional" value="@if (Model.Id != 0) { @Model.CedulaProfecional}" />
+                                <label>Correo electronico del Doctor:</label>
+                                <input class="form-control" name="email" value="@if (Model.Id != 0) { @Model.Email}" />
+                                <label>Especialidad del Doctor:</label>
+                                <input class="form-control" name="especialidad" value="@if (Model.Id != 0) { @Model.Especialidad}" />
+
+
+                            </div>
+
+                            <button class="btn btn-success" type="submit">Guardar</button>
+
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>

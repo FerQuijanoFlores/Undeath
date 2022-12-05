@@ -1,11 +1,11 @@
 ﻿@using Noviembre.Core.Entidades
-@model Estado
+@model Paciente
 
 <div id="page-wrapper">
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">Registro de estado</h1>
+                <h1 class="page-header">Registro de paciente</h1>
             </div>
         </div>
 
@@ -14,12 +14,12 @@
                 <div class="panel panel-default">
                     <div class="panel-body">
 
-                        <form action="@Url.Action("Guardar", "Estado")">
+                        <form action="@Url.Action("Guardar", "Paciente")">
                             <input type="hidden" class="form-control" name="id" value="@Model.Id">
 
                             <div class="form-group">
                                 <label>Nombre del estado:</label>
-                                <input class="form-control" name="nombre" value="@if (Model.Id != 0) { @Model.Nómbre}" />
+                                <input class="form-control" name="nombre" value="@if (Model.Id != 0) { @Model.Nombre}" />
 
                             </div>
 

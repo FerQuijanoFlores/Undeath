@@ -1,0 +1,67 @@
+﻿<!-- Page Content -->
+@using Noviembre.Core.Entidades
+@model List<Doctor>
+
+<div id="page-wrapper">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Doctores</h1>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+
+                        
+
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Nombre</th>
+                                        <th>Apellido</th>
+                                        <th>Especialidad</th>
+
+
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    @foreach (Doctor e in Model)
+                                    {
+                                        <tr>
+                                            <td>
+                                                @e.Nombre
+                                            </td>
+                                            <td>
+                                                @e.Apellido
+                                            </td>
+                                            <td>
+                                                @e.Especialidad
+                                            </td>
+                                            <td>
+                                                <a href="@Url.Action("Registro", "Doctor", new { @id = e.Id })" class="btn btn-primary btn-circle"> <i class="fa fa-pencil"></i> Editar</a>
+                                                <a class="btn btn-danger btn-circle"> <i class="fa fa-trash-o"></i> </a>
+
+                                            </td>
+                                        </tr>
+
+
+
+                                    }
+
+                                </tbody>
+                            </table>
+                            <a href="@Url.Action("Registro","Doctor", new {id =0 })" class="btn btn-primary">Agregar nuevo</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>

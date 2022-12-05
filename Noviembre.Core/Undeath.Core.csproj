@@ -79,10 +79,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
     <Compile Include="Database\Conexion.cs" />
     <Compile Include="Entidades\Cita.cs" />
     <Compile Include="Entidades\Ciudadano.cs" />
+    <Compile Include="Entidades\Consulta.cs" />
+    <Compile Include="Entidades\Consultorio.cs" />
+    <Compile Include="Entidades\Doctor.cs" />
+    <Compile Include="Entidades\Especialidad.cs" />
     <Compile Include="Entidades\Paciente.cs" />
     <Compile Include="Entidades\ComprobanteDomicilio.cs" />
     <Compile Include="Entidades\DocumentoNacionalidad.cs" />

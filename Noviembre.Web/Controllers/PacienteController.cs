@@ -16,5 +16,11 @@ namespace Noviembre.Web.Controllers
             return View(pacientes);
 
         }
+
+        public ActionResult Registro(int id)
+        {
+            Paciente pacientes = Paciente.GetById(id);
+            return View(pacientes);
+        }
     }
 }

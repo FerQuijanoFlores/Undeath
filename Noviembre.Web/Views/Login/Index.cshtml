@@ -1,0 +1,42 @@
+﻿@using Noviembre.Core.Entidades
+@model Paciente
+
+<div id="page-wrapper">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Verificacion de paciente</h1>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+
+                        <form action="@Url.Action("Guardar", "Paciente")">
+                            <input type="hidden" class="form-control" name="id" value="">
+
+                            <div class="form-group">
+                                <label>Nombre del paciente:</label>
+                                <input class="form-control" name="nombre" value="" />
+                                <label>Apellido del Paciente:</label>
+                                <input class="form-control" name="nombre" value="" />
+                                <label>Número de seguro social:</label>
+                                <input class="form-control" name="nombre" value="" />
+
+
+                            </div>
+
+                            <button class="btn btn-success" type="submit">Guardar</button>
+
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
