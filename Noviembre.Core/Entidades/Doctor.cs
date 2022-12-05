@@ -26,7 +26,7 @@ namespace Noviembre.Core.Entidades
                 Conexion conexion = new Conexion();
                 if (conexion.OpenConnection())
                 {
-                    string query = "SELECT id, nombre FROM doctor ORDER BY nombre;";
+                    string query = "SELECT id, nombre, apellido, especialidad FROM doctor ORDER BY nombre;";
 
                     MySqlCommand command = new MySqlCommand(query, conexion.connection);
 
@@ -36,6 +36,9 @@ namespace Noviembre.Core.Entidades
                         Doctor doctor = new Doctor();
                         doctor.Id = int.Parse(dataReader["id"].ToString());
                         doctor.Nombre = dataReader["nombre"].ToString();
+                        doctor.Apellido = dataReader["apellido"].ToString();
+                        doctor.Especialidad = dataReader["especialidad"].ToString();
+
 
                         Doctores.Add(doctor);
 
@@ -109,6 +112,7 @@ namespace Noviembre.Core.Entidades
                     }
                     else
                     {
+                        //ahorita
                         cmd.CommandText = "UPDATE especialidad SET nombre = @nombre WHERE id = @id";
                         cmd.Parameters.AddWithValue("@id", id);
                         cmd.Parameters.AddWithValue("@nombre", nombre);

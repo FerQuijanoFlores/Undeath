@@ -25,7 +25,7 @@ namespace Noviembre.Core.Entidades
                 Conexion conexion = new Conexion();
                 if (conexion.OpenConnection())
                 {
-                    string query = "SELECT id, nombre FROM paciente ORDER BY nombre;";
+                    string query = "SELECT id, nombre, apellidos, nss FROM paciente ORDER BY nombre;";
 
                     MySqlCommand command = new MySqlCommand(query, conexion.connection);
 
@@ -35,6 +35,8 @@ namespace Noviembre.Core.Entidades
                         Paciente paciente = new Paciente();
                         paciente.Id = int.Parse(dataReader["id"].ToString());
                         paciente.Nombre = dataReader["nombre"].ToString();
+                        paciente.apellido = dataReader["apellidos"].ToString();
+                        paciente.nss = dataReader["nss"].ToString();
 
                         pacientes.Add(paciente);
 

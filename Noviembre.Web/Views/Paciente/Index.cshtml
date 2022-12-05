@@ -15,13 +15,15 @@
                 <div class="panel panel-default">
                     <div class="panel-body">
 
-                        <a href="@Url.Action("Registro","Paciente", new {id =0 })" class="btn btn-primary">Agregar nuevo</a>
+                        
 
                         <div class="table-responsive">
                             <table class="table table-striped">
                                 <thead>
                                     <tr>
                                         <th>Nombre</th>
+                                        <th>Apellido</th>
+                                        <th>Número de Seguro Social</th>
                                         <th>Acciones</th>
 
                                     </tr>
@@ -35,6 +37,12 @@
                                                 @e.Nombre
                                             </td>
                                             <td>
+                                                @e.apellido
+                                            </td>
+                                            <td>
+                                                @e.nss
+                                            </td>
+                                            <td>
                                                 <a href="@Url.Action("Registro", "Paciente", new { @id = e.Id })" class="btn btn-primary btn-circle"> <i class="fa fa-pencil"></i> Editar</a>
                                                 <a class="btn btn-danger btn-circle"> <i class="fa fa-trash-o"></i> </a>
 
@@ -44,6 +52,7 @@
 
                                 </tbody>
                             </table>
+                            <a href="@Url.Action("Registro","Paciente", new {id =0 })" class="btn btn-primary">Agregar nuevo</a>
                         </div>
                     </div>
                 </div>
