@@ -23,22 +23,21 @@ namespace Noviembre.Core.Entidades
                 if (conexion.OpenConnection())
                 {
                     Doctor doctor = new Doctor();
-                    //string query = "SELECT con.id, con.numeroExterior, doc.id AS @idDoctor, doc.nombre AS "nombreDoc" FROM consultorio con INNER JOIN doctor doc ON con.idDoctor = doc.id;";
-                    string query = "SELECT con.id, con.numeroExterior, con.idDoctor, doc.id, doc.nombre, doc.apellido, doc.especialidad FROM consultorio con INNER JOIN doctor doc ON con.idDoctor = doc.id;";
-                    //string query2 = "SELECT id, nombre, especialidad FROM doctor WHERE id = @id;";
+                   
+                    string query = "SELECT con.id, con.numeroExterior, con.idDoctor, doc.id AS \"idDoc\", doc.nombre, doc.apellido, doc.especialidad FROM consultorio con INNER JOIN doctor doc ON con.idDoctor = doc.id;";
+                   
 
                     MySqlCommand command = new MySqlCommand(query, conexion.connection);
-                    //MySqlCommand command2 = new MySqlCommand(query2, conexion.connection);
+                    
 
                     MySqlDataReader dataReader = command.ExecuteReader();
-                    //MySqlDataReader dataReader2 = command2.ExecuteReader();
-                    //command2.Parameters.AddWithValue("@id", doctor.Id);
+
                     while (dataReader.Read())
                     {
                         Consultorio consultorio = new Consultorio();
                         consultorio.Id = int.Parse(dataReader["id"].ToString());
                         consultorio.NumeroExterior = int.Parse(dataReader["numeroExterior"].ToString());
-                        doctor.Id = int.Parse(dataReader["idDoctor"].ToString());
+                        doctor.Id = int.Parse(dataReader["idDoc"].ToString());
                         doctor.Nombre = dataReader["nombre"].ToString();
                         doctor.Apellido = dataReader["apellido"].ToString();
                         doctor.Especialidad = dataReader["especialidad"].ToString();
@@ -90,14 +89,6 @@ namespace Noviembre.Core.Entidades
                     }
 
                     result = cmd.ExecuteNonQuery() == 1;
-
-                    /* if (cmd.EndExecuteNonQuery() == 1)
-                     {
-                         result = true;
-
-                     }else { 
-                         result = false;
-                     }*/
                 }
             }
             catch (Exception ex)

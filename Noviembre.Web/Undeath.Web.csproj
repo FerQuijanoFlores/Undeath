@@ -121,6 +121,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ComprobanteDomicilioController.cs" />
+    <Compile Include="Controllers\ConsultaController.cs" />
     <Compile Include="Controllers\ConsultorioController.cs" />
     <Compile Include="Controllers\DoctorController.cs" />
     <Compile Include="Controllers\DocumentoNacionalidadController.cs" />
@@ -234,6 +235,7 @@
     <Content Include="Views\Consultorio\Index.cshtml" />
     <Content Include="Views\Consultorio\Registro.cshtml" />
     <Content Include="Views\Doctor\Registro.cshtml" />
+    <Content Include="Views\Consulta\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
